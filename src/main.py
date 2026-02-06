@@ -1,9 +1,18 @@
 import flet as ft
 from dataclasses import field
 from bleak import BleakClient
+import platform
 
-# ESPのアドレスなど
-MAC_ADDRESS = "90:15:06:7A:92:1A"
+# コード実行機のOSを判別
+os_name = platform.system()
+# ESPのアドレスなどを設定
+if os_name == 'Windows':
+    # Windows / Linux
+    MAC_ADDRESS = "90:15:06:7A:92:1A"
+elif os_name == 'Darwin':
+    # Mac OS
+    MAC_ADDRESS = "3C9AF520-9912-127C-6F91-3C0933B44BB6"
+# Common
 CHARACTERISTIC_UUID = "beb5483e-36e1-4688-b7f5-ea07361b26a8"
 
 # 各種ボタンなどのコンポーネント
