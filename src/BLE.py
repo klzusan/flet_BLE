@@ -41,7 +41,8 @@ class BLEConnectApp(ft.Container):
     async def send_data(self, data: str):
         try:
             # 毎回送信/切断を行うシンプルな方式
-            async with BleakClient(self.mac_addr, timeout=10.0) as client:
+            async with BleakClient(self.mac_addr, timeout=5.0) as client:
+                print(f"[Dev:client.is_connected] {client.is_connected}")
                 if client.is_connected:
                     print(f"[Dev] Connected")
                     # バイト列に変換して書き込み
